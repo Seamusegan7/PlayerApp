@@ -20,7 +20,7 @@ The main functions of this App is to be able to add players from popular footbal
 3.Players Position
 4.Player Rating
 5.Player Image
-6.Clubs Location
+6.Clubs Location.
 When you add in the player it will then show up in a card view showing the name, club, image and position of the player.
 
 **Author/Acknowledgments**
