@@ -6,11 +6,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.card_player.view.*
 import org.wit.player.R
+import org.wit.player.helpers.readImageFromPath
 import org.wit.player.models.PlayerModel
 
+interface PlayerListener {
+    fun onPlayerClick(player: PlayerModel)
+}
 
-class PlayerAdapter constructor(private var players: List<PlayerModel>) :
-        RecyclerView.Adapter<PlayerAdapter.MainHolder>() {
+
+class PlayerAdapter constructor(private var players: List<PlayerModel>,
+        private val listener: PlayerListener) :  RecyclerView.Adapter<PlayerAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         return MainHolder(
@@ -25,16 +30,19 @@ class PlayerAdapter constructor(private var players: List<PlayerModel>) :
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         val player = players[holder.adapterPosition]
-        holder.bind(player)
+        holder.bind(player, listener)
     }
 
     override fun getItemCount(): Int = players.size
 
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(player: PlayerModel) {
-            itemView.playerTitle.text = player.title
-            itemView.description.text = player.description
+        fun bind(player: PlayerModel, listener : PlayerListener) {
+            itemView.playerNameCard.text = player.playerName
+            itemView.playerClubCard.text = player.playerClub
+            itemView.playerPositionCard.text = player.playerPosition
+            itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, player.image))
+            itemView.setOnClickListener { listener.onPlayerClick(player)}
         }
     }
 }
