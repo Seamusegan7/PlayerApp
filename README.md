@@ -17,10 +17,11 @@ Having a big interest in football it was always going to be my first idea to bui
 The main functions of this App is to be able to add players from popular football clubs and give information about them. You will be able to update or delete this information at any time. The information that you can add in about the player is:
 1.Player Name
 2.Players Club
-3.Player Rating
-4.Player Image
-5.Clubs Location
-
+3.Players Position
+4.Player Rating
+5.Player Image
+6.Clubs Location
+When you add in the player it will then show up in a card view showing the name, club, image and position of the player.
 
 **Author/Acknowledgments**
 
